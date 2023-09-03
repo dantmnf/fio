@@ -1381,8 +1381,9 @@ int main(int argc, char **argv)
   return ASharedMemory_create("", 0);
 }
 EOF
-if compile_prog "" "" "ASharedMemory_create"; then
+if compile_prog "" "-landroid" "ASharedMemory_create"; then
   ASharedMemory_create="yes"
+  LIBS="-landroid $LIBS"
 fi
 print_config "ASharedMemory_create" "$ASharedMemory_create"
 
